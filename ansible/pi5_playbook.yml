@@ -27,3 +27,23 @@
         name:
           - hailo-all      
           - rpicam-apps
+
+    - name: Clone hailo-rpi5-examples
+      git:
+        repo: https://github.com/hailo-ai/hailo-rpi5-examples.git
+        dest: /home/paul/Documents/projects/hailo/hailo-rpi5-examples
+        clone: yes
+        update: yes
+
+    - name: Install hailo-rpi5-examples 
+      become: true   
+      ansible.builtin.shell: ./install.sh >> install_log.txt     
+      args:
+        chdir: /home/paul/Documents/projects/hailo/hailo-rpi5-examples
+
+    - name: Clone picamera2
+      git:
+        repo: https://github.com/raspberrypi/picamera2.git
+        dest: /home/paul/Documents/projects/picamera2
+        clone: yes
+        update: yes        
